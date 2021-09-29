@@ -5,6 +5,20 @@ Le projet C s'inscrit dans le cadre de la formation du diplôme d'ingénieur à 
 # Documentation
 > Pas de documentation pour le moment ...
 
+```mermaid
+graph TD
+A[Main.c] --> B(Onglet 1)
+A[Main.c] --> C(Onglet 2)
+A[Main.c] --> D(Onglet 3)
+B(Onglet 1) --> E(Sous-Onglet B1)
+B(Onglet 1) --> F(Sous-Onglet B1)
+C(Onglet 1) --> H(Sous-Onglet C2)
+C(Onglet 1) --> I(Sous-Onglet C2)
+D(Onglet 1) --> K(Sous-Onglet D3)
+D(Onglet 1) --> L(Sous-Onglet D3)
+
+```
+
 ## Guide d'utilisation
 > Pas de guide d'utilisation pour le moment ...
 
