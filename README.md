@@ -19,12 +19,13 @@ Le projet C s'inscrit dans le cadre de la formation du diplôme d'ingénieur à 
 
 # Travail à réaliser
 
-Synchronization is one of the biggest features of StackEdit. It enables you to synchronize any file in your workspace with other files stored in your **Google Drive**, your **Dropbox** and your **GitHub** accounts. This allows you to keep writing on other devices, collaborate with people you share the file with, integrate easily into your workflow... The synchronization mechanism takes place every minute in the background, downloading, merging, and uploading file modifications.
+Il nous est demandé de réaliser un éditeur dédié aux automates finis. Dans ce qui suit, X
+est un alphabet (un ensemble de symbole). L’éditeur permet de :
 
 1. Manipuler des mots d’un alphabet
 	- Vérifier si un mot appartient à X*.
 	- Calculer la puissance d’un mot.
-	- Vérifier si un mot est vide ().
+	- Vérifier si un mot est vide (3psilon).
 	- Concaténer deux mots.
 	- Calculer le miroir d’un mot.
 	- Vérifier si une chaine de caractères représente un mot fini.
@@ -53,10 +54,10 @@ unitaires sont pris en charge.
 10. Suppression des transitions epsilon (vides).
 
 11. Réaliser des opérations suivantes sur les AEFs :
-	- complément d’un AEF,
-	- miroir d’un AEF,
-	- produit de deux AEFs,
-	- concaténation de deux AEFs.
+	- Complément d’un AEF.
+	- Miroir d’un AEF.
+	- Produit de deux AEFs.
+	- Concaténation de deux AEFs.
 
 12. Vérifier si deux automates sont équivalents Vous supposez que seuls les cycles
 unitaires sont pris en charge.
@@ -65,10 +66,10 @@ unitaires sont pris en charge.
 
 14. Expressions régulières (Ers)
 	1. Manipuler une ER :
-		- saisir une ER,
-		- importer une ER à partir d’un fichier,
-		- modifier une ER,
-		- sauvegarder une ER dans un fichier
+		- Saisir une ER.
+		- Importer une ER à partir d’un fichier.
+		- Modifier une ER.
+		- Sauvegarder une ER dans un fichier.
 	2. Vérifier si une ER est correcte
 	3. Vérifier si un mot est reconnu par une ER.
 	4. Traduire une ER en un AEF équivalent.
