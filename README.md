@@ -5,7 +5,8 @@ Le projet C s'inscrit dans le cadre de la formation du diplôme d'ingénieur à 
 # Documentation
 
 ## Guide d'utilisation
-> Pas de guide d'utilisation pour le moment ...
+> <span style="color: #FF2511	"> make </span> <span style="color: #C6B79B"> comp </span>  : Compiler et exécuter le programme
+> <span style="color: #FF2511	"> make </span> <span style="color: #C6B79B"> clean </span>  : pour nettoyer working directory
 
 ## Fichiers
 > Pas d'arborescence pour le moment ...
