@@ -20,11 +20,12 @@ void estFini(char langage[]);
 
 
 void appartient(char langage[],char alphabet[]){
-        
+    // "appar" est un booléen qui retourne si l'alphabet qu'utilise le langage est valide 
     bool appar = false;
     bool resu = true;
     int i,j;
     i = 0;
+    // Boucle qui sert à recupperer l'alphabet
     while(i<strlen(alphabet))
     {
         if (alphabet[i]==','||alphabet[i]=='{'||alphabet[i]=='}')

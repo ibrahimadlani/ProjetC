@@ -104,7 +104,7 @@ void appeleExo1(int choix){
             scanf("%s",alphabet);
             
             appartient(langage,alphabet);
-            sleep(2);
+            sleep(6);
             break;
         case 2:
             printf("\nentrer votre langage ex(aaba) : ");
@@ -114,14 +114,14 @@ void appeleExo1(int choix){
             scanf("%d",&power);
             
             puis(langage,power);
-            sleep(2);
+            sleep(6);
             break;
         case 3:
             printf("\nentrer votre langage ex(aaba) : ");
             scanf("%s",langage);
             
             vide(langage);
-            sleep(2);
+            sleep(6);
             break;
         case 4:
             printf("\nentrer votre langage ex(aaba) : ");
@@ -133,21 +133,21 @@ void appeleExo1(int choix){
             scanf("%s",langage2);
             
             concat(langage,langage2);
-            sleep(2);
+            sleep(6);
             break;
         case 5:
             printf("\nentrer votre langage ex(aaba) : ");
             scanf("%s",langage);
         
             miroir(langage);
-            sleep(2);
+            sleep(6);
             break;
         case 6:
             printf("\nentrer votre langage ex(aaba) : ");
             scanf("%s",langage);
             
             estFini(langage);
-            sleep(2);
+            sleep(6);
             break;
         case 9:
             printf ("\033[34;01m au revoir \033[00m\n");
