@@ -1,7 +1,7 @@
 CC=cc
-PROG=main.c exo1.c exo2.c menu.c
+PROG=./src/main.c ./src/exo1.c ./src/exo2.c ./src/menu.c
 PROGEX=main.out
-CFLAGS=-g -pedantic -Wall -Wnewline-eof
+CFLAGS= -pedantic -Wall -Wnewline-eof
 
 clean:
 	-rm -r *.o *.err *.out *.dSYM
