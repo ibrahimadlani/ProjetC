@@ -9,7 +9,11 @@
 
     #include "menu.h"
 
+    #include "imports.h"
+    
     #include "exo1.h"
+
+    #include "exo2.h"
 
 #define fonction_h
 

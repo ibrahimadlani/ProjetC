@@ -1,22 +1,5 @@
-//
-//  exo1.h
-//  Cprojet
-//
-//  Created by Aymane on 10/1/21.
-//
-
-#ifndef exo1_h
-
-#include "imports.h"
-
-void appartient(char langage[],char alphabet[]);
-void puis(char langage[],int power);
-void vide(char langage[]);
-void concat(char langage1[],char langage2[]);
-void miroir(char langage[]);
-void estFini(char langage[]);
-
-#define exo1_h
+#include "../include/imports.h"
+#include "../include/exo1.h"
 
 
 void appartient(char langage[],char alphabet[]){
@@ -72,6 +55,7 @@ void puis(char langage[],int power){
     printf("%s\n",resu);
 }
 
+
 /*
  * --- fonction vide ---
  */
@@ -123,5 +107,3 @@ void estFini(char langage[]){
     printf("%s \n",strchr(langage, '*')==NULL?"true":"false");
 }
 
-
-#endif /* exo1_h */

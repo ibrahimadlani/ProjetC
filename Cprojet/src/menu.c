@@ -1,21 +1,5 @@
-//
-//  menu.h
-//  Cprojet
-//
-//  Created by Aymane on 10/1/21.
-//
-
-#ifndef menu_h
-
-#include "exo1.h"
-
-void automateSlogo(void);
-void menuPrincipale(void);
-void menuSecendaire(void);
-void appeleExo1(int choix);
-
-#define menu_h
-
+#include "../include/menu.h"
+#include "../include/fonction.h"
 
 void menuPrincipale(void){
     
@@ -29,7 +13,7 @@ void menuPrincipale(void){
         printf ("\033[34;01m Menu Principale \033[00m\n");
 
         printf("   \033[34;01m|____ 1) \033[00mManipulation des mots d’un alphabet.\n");
-        printf("   \033[34;01m|____ 2) \033[00m  \n");
+        printf("   \033[34;01m|____ 2) \033[00mManipuler un AEF.  \n");
         printf("   \033[34;01m|____ 3) \033[00m  \n");
         printf("   \033[34;01m|____ 4) \033[00m \n");
         printf("   \033[34;01m|____ 5) \033[00m \n");
@@ -49,14 +33,14 @@ void menuPrincipale(void){
             case 1:
                 
                 printf("   \033[34;01m |____1) \033[00mManipulation des mots d’un alphabet.\n");
-                printf("        \033[36;01m|_____ 1) \033[00mvérifier si un mot appartient à X*.\n");
-                printf("        \033[36;01m|_____ 2) \033[00mcalculer la puissance d’un mot.\n");
-                printf("        \033[36;01m|_____ 3) \033[00mvérifier si un mot est vide.\n");
-                printf("        \033[36;01m|_____ 4) \033[00mconcaténer deux mots.\n");
-                printf("        \033[36;01m|_____ 5) \033[00mcalculer le miroir d’un mot.\n");
-                printf("        \033[36;01m|_____ 6) \033[00mvérifier si une chaine de caractères représente un mot fini.\n");
-                printf("        \033[36;01m|_____ 0) \033[00mpour revenir au menu principale.\n");
-                printf("        \033[36;01m|_____ 9) \033[00mpour quiter.\n");
+                printf("        \033[36;01m|_____ 1) \033[00mVérifier si un mot appartient à X*.\n");
+                printf("        \033[36;01m|_____ 2) \033[00mCalculer la puissance d’un mot.\n");
+                printf("        \033[36;01m|_____ 3) \033[00mVérifier si un mot est vide.\n");
+                printf("        \033[36;01m|_____ 4) \033[00mConcaténer deux mots.\n");
+                printf("        \033[36;01m|_____ 5) \033[00mCalculer le miroir d’un mot.\n");
+                printf("        \033[36;01m|_____ 6) \033[00mVérifier si une chaine de caractères représente un mot fini.\n");
+                printf("        \033[36;01m|_____ 0) \033[00mPour revenir au menu principale.\n");
+                printf("        \033[36;01m|_____ 9) \033[00mPour quiter.\n");
                 printf("===> : ");
                 scanf("%d",&choi2);
                 
@@ -66,15 +50,18 @@ void menuPrincipale(void){
                 
             case 2:
                 
-                printf("   |____ 2)   \n");
-                printf("        |_____ 1) \n");
-                printf("        |_____ 2) \n");
-                printf("        |_____ 3) \n");
-                printf("        |_____ 4) \n");
-                printf("        |_____ 0) pour revenir au menu principale \n");
-                printf("        |_____ 9) pour quiter \n");
+                printf("   \033[34;01m |____ 2) \033[00m Manipuler un AEF.   \n");
+                printf("        \033[36;01m|_____ 1)\033[00m Saisir un AEF, \n");
+                printf("        \033[36;01m|_____ 2)\033[00m Importer un AEF à partir d’un fichier,\n");
+                printf("        \033[36;01m|_____ 3)\033[00m modifier un AEF,\n");
+                // printf("        \033[36;01m|_____ 4)\033[00m sauvegarder un AEF dans un fichier.\n");
+                printf("        \033[36;01m|_____ 0)\033[00m Pour revenir au menu principale \n");
+                printf("        \033[36;01m|_____ 9)\033[00m Pour quiter \n");
                 printf("===> : ");
+
                 scanf("%d",&choi2);
+                appeleExo2(choi2);
+
                 system("clear");
                 
             default:
@@ -84,7 +71,6 @@ void menuPrincipale(void){
     }
     printf ("\033[34;01m au revoir \033[00m\n");
 }
-
 
 void appeleExo1(int choix){
     
@@ -104,7 +90,7 @@ void appeleExo1(int choix){
             scanf("%s",alphabet);
             
             appartient(langage,alphabet);
-            sleep(6);
+            sleep(2);
             break;
         case 2:
             printf("\nentrer votre langage ex(aaba) : ");
@@ -114,14 +100,14 @@ void appeleExo1(int choix){
             scanf("%d",&power);
             
             puis(langage,power);
-            sleep(6);
+            sleep(2);
             break;
         case 3:
             printf("\nentrer votre langage ex(aaba) : ");
             scanf("%s",langage);
             
             vide(langage);
-            sleep(6);
+            sleep(2);
             break;
         case 4:
             printf("\nentrer votre langage ex(aaba) : ");
@@ -133,21 +119,21 @@ void appeleExo1(int choix){
             scanf("%s",langage2);
             
             concat(langage,langage2);
-            sleep(6);
+            sleep(2);
             break;
         case 5:
             printf("\nentrer votre langage ex(aaba) : ");
             scanf("%s",langage);
         
             miroir(langage);
-            sleep(6);
+            sleep(2);
             break;
         case 6:
             printf("\nentrer votre langage ex(aaba) : ");
             scanf("%s",langage);
             
             estFini(langage);
-            sleep(6);
+            sleep(2);
             break;
         case 9:
             printf ("\033[34;01m au revoir \033[00m\n");
@@ -159,8 +145,36 @@ void appeleExo1(int choix){
     
 }
 
-void automateSlogo(void){
+void appeleExo2(int choix){
+    
+    switch(choix){
+        case 0:
+            break;
+        case 1:
+            enterAEF();
+            sleep(6);
+            break;
+        case 2:
+            importAEF();
+            sleep(6);
+            break;
+        case 3:
+            editeAEF();
+            sleep(6);
+            break;
+        case 9:
+            printf ("\033[34;01m au revoir \033[00m\n");
+            exit(0);
+            break;
+        default:
+            break;
+    }
 
+}
+
+void automateSlogo(void){
+    
+    printf("Bonjour 😀\n");
     printf("                  _                                 _                        _     __   _             _              __   _           _            __             ______   ______  __  \n");
     printf("                 | |                               | |                      | |   /_/  | |           | |            / _| (_)         (_)          / /     /\\     |  ____| |  ____| \\ \\ \n");
     printf("   __ _   _   _  | |_    ___    _ __ ___     __ _  | |_    ___   ___      __| |   ___  | |_    __ _  | |_   ___    | |_   _   _ __    _   ___    | |     /  \\    | |__    | |__     | |\n");
@@ -171,6 +185,3 @@ void automateSlogo(void){
     printf("\n");
     
 }
-
-
-#endif /* menu_h */
