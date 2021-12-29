@@ -15,6 +15,10 @@
 
     #include "exo2.h"
 
+    #include "exo3.h"
+
+    #include "exo4.h"
+
 #define fonction_h
 
 

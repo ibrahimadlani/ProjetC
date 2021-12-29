@@ -19,5 +19,6 @@ void appeleExo1(int choix);
 
 void appeleExo2(int choix);
 
+void appeleExo3(int choix);
 #define menu_h
 #endif /* menu_h */
