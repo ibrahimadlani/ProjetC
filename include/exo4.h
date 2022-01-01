@@ -1,13 +1,13 @@
 //
 //  exo4.h
-//  Cprojet
+//  Projet_C
 //
-//  Created by Aymane on 12/13/21.
+/* 28/12/21 by Saliou */
 //
-
 
 #ifndef exo4_h
 
+void Completude(void);
 
 
 #define exo4_h

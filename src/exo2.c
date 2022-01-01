@@ -89,7 +89,6 @@ void importAEF(){
     G_transactionNbr = i-2;
     
     fclose(f);
-    scanf("");
 }
 
 void editeAEF(){
@@ -168,4 +167,3 @@ void editeAEF(){
     // // saveAEF(state,initialState,finiteState,transactionNbr);
     // scanf("%d",G_transactionNbr);
 }
-

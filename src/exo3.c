@@ -72,8 +72,8 @@ void CheckWordRecognized(void){
     		nw = (char *)malloc(trans * sizeof(char));
 		}
       	
-      	if(i==3)
-      		start = line[0];
+      	if(i==3){
+      		start = line[0];}
  	
  		if(i==4){
  			
