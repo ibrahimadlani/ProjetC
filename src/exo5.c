@@ -1,8 +1,8 @@
 #include "../include/imports.h"
-#include "../include/exo4.h"
+#include "../include/exo5.h"
 
 
-/* 28/12/21 by Saliou */
+/* 29/12/21 by Saliou */
 
 typedef struct s_liste {
         int state;	// Nom de l'etat
@@ -18,30 +18,8 @@ typedef struct {
 } automate;
 
 
-
-int complet(automate au) {
-	int i,j;
-	int nb =0;
-
-	// On regarde si toute les lettres sont utilisees pour chaques etats
-	for(i=0; i<au.size;i++) {
-		for(j=0; j<au.sizeAlpha; j++) {
-			if(au.trans[i][j] != NULL) {
-				nb++;
-			}
-		}
-		// On compte les transitions par lettres, si leurs nombres
-		// est different de sizeAlpha, l'automate n'est pas complet
-		if(nb != au.sizeAlpha) {
-			return 0;
-		}
-		nb = 0;
-	}
-
-	return 1;
-}    
 // Fonction qui ajouter un element à une liste
-void ajouteListe(liste** l,int q){
+void ajouteListe2(liste** l,int q){
 	liste* ptl;
 	liste* tmp;
 	ptl=*l;
@@ -82,18 +60,58 @@ void ajouteListe(liste** l,int q){
 	ptl->nxt=tmp;
 }
 
+
 // Fonction qui ajoute une transition qui part de src vers targ, avec lettre alpha
-void ajouteTransition(automate* au, int src, int targ, char alpha){
+void ajouteTransition2(automate* au, int src, int targ, char alpha){
 	if (src >= au->size || src < 0 || targ >= au->size || targ < 0 || ((int)(alpha - 'a') >= au->sizeAlpha)){
 		printf("L'Etat ou la lettre n'existe pas. \n");
 		return;
 	}
-	ajouteListe(&(au->trans[src][(int)(alpha - 97)]), targ);	
+	ajouteListe2(&(au->trans[src][(int)(alpha - 97)]), targ);	
 }
 
 
+
+
+
+
+// Fonction qui complete l'automate passé en paramètre
+void completer(automate* au) {
+	liste*** tmp = (liste***) malloc((au->size + 1)*sizeof(liste**));
+    int* newinit = (int*) malloc((au->size + 1)*sizeof(int));
+    int* newfinal = (int*) malloc((au->size + 1)*sizeof(int));
+
+    int i,j,db = au->size;
+
+    for(i=0;i<au->size;i++) {
+        tmp[i] = au->trans[i];
+        newinit[i] = au->initial[i];
+        newfinal[i] = au->final[i];
+    }
+
+    tmp[db] =(liste**) malloc(au->sizeAlpha*sizeof(liste*));
+
+    for(j=0;j<au->sizeAlpha;j++) {
+        tmp[db][j] = NULL;
+    }
+    newinit[db] = 0;
+    newfinal[db] = 0;
+
+    au->size = db + 1;
+    au->trans = tmp;
+    au->initial = newinit;
+    au->final = newfinal;
+
+    for(i=0;i<au->size;i++) {
+        for(j=0;j<au->sizeAlpha;j++) {
+            if(au->trans[i][j] == NULL) {
+                ajouteTransition2(au,i,db,(char) j + 'a');
+            }
+        }
+    }
+}
 // Affiche l'automate passé en paramètre
-void afficheAutomate1(automate au){
+void afficheAutomate2(automate au){
 	int i,j;
 	unsigned char c;
 
@@ -142,7 +160,11 @@ void afficheAutomate1(automate au){
 
 
 
-void Completude(void){
+
+
+
+
+void CompleteAu(void) {
 
    	int continuer = 1;
    	int continuer2 = 1;
@@ -153,14 +175,13 @@ void Completude(void){
         int targ;
 	char tran;
 	
-
 	
 
 	
 
 
     while(continuer) {
-    	printf("Construisez l'automate à vérifier (Appuyer sur la Touche '1' pour continuer): \n");
+    	printf("Construisez l'automate à compléter (Appuyer sur la Touche '1' pour continuer): \n");
     	scanf("%i", &choix);
     	switch(choix) {
     		
@@ -208,11 +229,11 @@ void Completude(void){
 						printf("\nPar transition ? (a, ..., %c /!\\ à la valeur !)", au->sizeAlpha+96); // 97:a; -1 pour la taille
 						scanf ("%s",&tran);
 						printf("%c\n", tran);
-						ajouteTransition(au,i,targ,tran);
+						ajouteTransition2(au,i,targ,tran);
 					}
 				}
-				printf("AFFICHAGE RECAPITULATIF DE L'AUTOMATE" );
-				afficheAutomate1(*au);
+				printf("AFFICHAGE RECAPITULATIF DE L'AUTOMATE");
+				afficheAutomate2(*au);
 
     			break;
     			
@@ -225,20 +246,20 @@ void Completude(void){
  
     	
     	while(continuer2) {
-    		printf("L'automate saisi est-il complet?\n (Appuyer sur '8' pour vérifier sa complétude\n Ou '9' pour quitter: ");
+    		printf("Rendons l'automate saisi complet!\n (Appuyer sur '8' pour  le compléter\n '9' pour quitter: ");
 			scanf("%i", &choix);
 
 			switch(choix) {
+			    
 				case 8:
-					if(complet(*au))
-                                          printf("\nL'AUTOMATE EST BIEN COMPLET\n \n");
-                                       else
-                                          printf("\nL'AUTOMATE N'EST PAS COMPLET!\n \n");
-                                    break;
+					printf("Completion:\n");
+					completer(au);
+					afficheAutomate2(*au);
+					break;
                               case 9:
                 	               continuer = 0;
                 	               continuer2 = 0;
-                	             break;     
+                	               break;     
                 
                                default:
                 	             printf("Mauvaise entrée\n");

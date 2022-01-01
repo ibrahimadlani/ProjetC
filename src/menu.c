@@ -9,21 +9,21 @@ void menuPrincipale(void){
     while (choi!=0 ) {
         choi=1;
         automateSlogo();
-        // \033[34;01m pour changer la couleur  \033[0mm  pour revenir a la coulet par default
+        // \033[34;01m pour changer la couleur  \033[0mm  pour revenir a la couleur par default
         printf ("\033[34;01m Menu Principale \033[00m\n");
 
         printf("   \033[34;01m|____ 1) \033[00mManipulation des mots d’un alphabet.\n");
         printf("   \033[34;01m|____ 2) \033[00mManipuler un AEF.  \n");
         printf("   \033[34;01m|____ 3) \033[00mVérifier si un mot est reconnu par un AEF.  \n");
-        printf("   \033[34;01m|____ 4) \033[00m \n");
-        printf("   \033[34;01m|____ 5) \033[00m \n");
+        printf("   \033[34;01m|____ 4) \033[00mVérifier la complétude d'un AEF. \n");
+        printf("   \033[34;01m|____ 5) \033[00mCompléter un AEF saisi.   \n");
         printf("   \033[34;01m|____ 6) \033[00m \n");
         printf("   \033[34;01m|____ 7) \033[00m \n");
         printf("   \033[34;01m|____ 8) \033[00m \n");
         printf("   \033[34;01m|____ 9) \033[00m \n");
         printf("   \033[34;01m|____ 10)\033[00m  \n");
         printf("   \033[34;01m|____ 11)\033[00m  \n");
-        printf("   \033[34;01m|____ 0) \033[00mpour quitter   \n");
+        printf("   \033[34;01m|____ 0) \033[00Pour quitter   \n");
         printf("===> : ");
         scanf("%d",&choi);
         system("clear");
@@ -54,6 +54,7 @@ void menuPrincipale(void){
                 printf("        \033[36;01m|_____ 1)\033[00m Saisir un AEF, \n");
                 printf("        \033[36;01m|_____ 2)\033[00m Importer un AEF à partir d’un fichier,\n");
                 printf("        \033[36;01m|_____ 3)\033[00m modifier un AEF,\n");
+                // printf("        \033[36;01m|_____ 4)\033[00m sauvegarder un AEF dans un fichier.\n");
                 printf("        \033[36;01m|_____ 0)\033[00m Pour revenir au menu principale \n");
                 printf("        \033[36;01m|_____ 9)\033[00m Pour quiter \n");
                 printf("===> : ");
@@ -62,6 +63,8 @@ void menuPrincipale(void){
                 appeleExo2(choi2);
 
                 system("clear");
+                break;
+                
             case 3:
 
                 printf("   \033[34;01m |____ 3) \033[00m Vérifier si un mot est reconnu par un AEF.     \n");
@@ -74,6 +77,39 @@ void menuPrincipale(void){
                 appeleExo3(choi2);
 
                 system("clear");
+                break;   
+                
+                
+             case 4: 
+                
+                printf("   \033[34;01m|____ 4) \033[00m Vérifier la complétude d'un AEF. \n");
+                printf("        \033[36;01m|_____ 1)\033[00m Saisissez un AEF et vérifier sa complétude, \n");
+                printf("        \033[36;01m|_____ 0)\033[00m Pour revenir au menu principale \n");
+                printf("        \033[36;01m|_____ 9)\033[00m Pour quiter \n");
+                printf("===> : ");
+
+                scanf("%d",&choi2);
+                appeleExo4(choi2);
+
+                system("clear");
+                
+                break;
+              
+              case 5: 
+                
+                printf("   \033[34;01m|____ 5) \033[00m Compléter un AEF saisi. \n");
+                printf("        \033[36;01m|_____ 1)\033[00m Saisissez un AEF non-complet et le compléter \n");
+                printf("        \033[36;01m|_____ 0)\033[00m Pour revenir au menu principale \n");
+                printf("        \033[36;01m|_____ 9)\033[00m Pour quiter \n");
+                printf("===> : ");
+
+                scanf("%d",&choi2);
+                appeleExo5(choi2);
+
+                system("clear");
+                
+                break;
+                
             default:
                 break;
         }
@@ -198,6 +234,44 @@ void appeleExo3(int choix){
             break;
     } 
 }
+
+
+
+void appeleExo4(int choix){
+    switch(choix){
+        case 0:
+            break;
+        case 1:
+            Completude();
+            sleep(6);
+            break;
+        case 9:
+            printf ("\033[34;01m au revoir \033[00m\n");
+            exit(0);
+            break;
+        default:
+            break;
+}
+}
+
+void appeleExo5(int choix){
+    switch(choix){
+        case 0:
+            break;
+        case 1:
+            CompleteAu();
+            sleep(6);
+            break;
+        case 9:
+            printf ("\033[34;01m au revoir \033[00m\n");
+            exit(0);
+            break;
+        default:
+            break;
+}
+}
+
+
 
 void automateSlogo(void){
     
