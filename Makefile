@@ -1,7 +1,7 @@
 CC=cc
 PROG=./src/*.c
 PROGEX=main.out
-CFLAGS= -pedantic -Wall -Wnewline-eof
+CFLAGS= -pedantic -Wall 
 
 clean:
 	-rm -r *.o *.err *.out *.dSYM

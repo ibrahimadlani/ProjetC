@@ -21,6 +21,8 @@
 
     #include "exo5.h"
 
+    #include "exo6.h"
+
 #define fonction_h
 
 
