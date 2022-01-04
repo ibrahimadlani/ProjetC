@@ -207,7 +207,7 @@ void CompleteAu(void) {
 				for(i=0; i<au->size; i++) {
 					printf("Etat:%d, Final? Oui:1 | Non:0\n", i);
 					scanf ("%d",&k);
-					au->initial[i] = k;
+					au->final[i] = k;
 				}
 
 				// Creation/initialisations de transitions vides

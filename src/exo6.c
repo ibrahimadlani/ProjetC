@@ -1,8 +1,6 @@
 #include "../include/imports.h"
-#include "../include/exo4.h"
+#include "../include/exo6.h"
 
-
-/* 28/12/21 by Saliou */
 
 typedef struct s_liste {
         int state;	// Nom de l'etat
@@ -18,30 +16,38 @@ typedef struct {
 } automate;
 
 
+int deterministe(automate au) {
+    int i,j;
+    int reference = 1;
+    int etat = 0;
 
-int complet(automate au) {
-	int i,j;
-	int nb =0;
 
-	// On regarde si toute les lettres sont utilisees pour chaques etats
-	for(i=0; i<au.size;i++) {
-		for(j=0; j<au.sizeAlpha; j++) {
-			if(au.trans[i][j] != NULL) {
-				nb++;
-			}
-		}
-		// On compte les transitions par lettres, si leurs nombres
-		// est different de sizeAlpha, l'automate n'est pas complet
-		if(nb != au.sizeAlpha) {
-			return 0;
-		}
-		nb = 0;
-	}
+    while(etat < au.size) {
+        if(au.initial[etat] ==1) {
+            if(reference) {
+                reference = 0;
+            } else {
+                return 0;
+            }
+        }
+        etat++;
+    }
 
-	return 1;
-}    
+    reference = 1;
+
+    for(i=0; i<au.size;i++) {
+        for(j=0; j<au.sizeAlpha; j++) {
+
+            if(au.trans[i][j] != NULL && au.trans[i][j]->nxt != NULL) {
+                reference = 0;
+            }
+        }
+    }
+    return reference;
+}
+
 // Fonction qui ajouter un element à une liste
-void ajouteListe(liste** l,int q){
+void ajouterListe(liste** l,int q){
 	liste* ptl;
 	liste* tmp;
 	ptl=*l;
@@ -83,17 +89,16 @@ void ajouteListe(liste** l,int q){
 }
 
 // Fonction qui ajoute une transition qui part de src vers targ, avec lettre alpha
-void ajouteTransition(automate* au, int src, int targ, char alpha){
+void ajouterTransition(automate* au, int src, int targ, char alpha){
 	if (src >= au->size || src < 0 || targ >= au->size || targ < 0 || ((int)(alpha - 'a') >= au->sizeAlpha)){
 		printf("L'Etat ou la lettre n'existe pas. \n");
 		return;
 	}
-	ajouteListe(&(au->trans[src][(int)(alpha - 97)]), targ);	
+	ajouterListe(&(au->trans[src][(int)(alpha - 97)]), targ);	
 }
 
-
 // Affiche l'automate passé en paramètre
-void afficheAutomate1(automate au){
+void afficherAutomate(automate au){
 	int i,j;
 	unsigned char c;
 
@@ -133,18 +138,10 @@ void afficheAutomate1(automate au){
 		}
 	}
 	printf("\n");
-	
 }
 
-
-
-
-
-
-
-void Completude(void){
-
-   	int continuer = 1;
+void isAuDeterministic(void){
+    int continuer = 1;
    	int continuer2 = 1;
 	automate* au = (automate*) malloc(sizeof(automate));
         int choix = 0;
@@ -153,21 +150,15 @@ void Completude(void){
         int targ;
 	char tran;
 	
-
-	
-
-	
-
-
     while(continuer) {
     	printf("Construisez l'automate à vérifier (Appuyer sur la Touche '1' pour continuer): \n");
     	scanf("%i", &choix);
     	switch(choix) {
     		
     		case 1:
-    			printf("Taille?(size): \n");
+    			printf("Taille ?(size): \n");
     			scanf("%i", &size);
-    			printf("Taille Alphabet(sizeAlpha, numérique): \n");
+    			printf("Taille Alphabet (sizeAlpha, numérique): \n");
     			scanf("%i", &sizeAlpha);
 
     			au->size = size;
@@ -176,7 +167,7 @@ void Completude(void){
 				au->initial = (int*) malloc(au->size*sizeof(int));
 
 				for(i=0; i<au->size; i++) {
-					printf("Etat:%d, Initial? Oui:1 | Non:0\n", i);
+					printf("Etat:%d, Initial ? Oui:1 | Non:0\n", i);
 					scanf("%d",&k);
 					au->initial[i] = k;
 				}
@@ -184,7 +175,7 @@ void Completude(void){
 				au->final = (int*) malloc(au->size*sizeof(int));
 
 				for(i=0; i<au->size; i++) {
-					printf("Etat:%d, Final? Oui:1 | Non:0\n", i);
+					printf("Etat:%d, Final ? Oui:1 | Non:0\n", i);
 					scanf ("%d",&k);
 					au->final[i] = k;
 				}
@@ -200,7 +191,7 @@ void Completude(void){
 
 				for(i=0;i<au->size;i++) {
 					printf("Etat: %d | ", i);
-					printf("Combien de transitions voulez vous ajouter\n");
+					printf("Combien de transitions voulez vous ajouter ?\n");
 					scanf ("%d",&k);
 					for(j=0; j<k; j++) {
 						printf("\nEtat cible ? (de 0 à %d): ", au->size-1);
@@ -208,11 +199,11 @@ void Completude(void){
 						printf("\nPar transition ? (a, ..., %c /!\\ à la valeur !)", au->sizeAlpha+96); // 97:a; -1 pour la taille
 						scanf ("%s",&tran);
 						printf("%c\n", tran);
-						ajouteTransition(au,i,targ,tran);
+						ajouterTransition(au,i,targ,tran);
 					}
 				}
 				printf("AFFICHAGE RECAPITULATIF DE L'AUTOMATE" );
-				afficheAutomate1(*au);
+				afficherAutomate(*au);
 
     			break;
     			
@@ -225,15 +216,15 @@ void Completude(void){
  
     	
     	while(continuer2) {
-    		printf("L'automate saisi est-il complet?\n (Appuyer sur '8' pour vérifier sa complétude\n Ou '9' pour quitter: ");
+    		printf("L'automate saisi est-il deterministe ? \n (Appuyer sur '8' pour vérifier \n Ou '9' pour quitter: ");
 			scanf("%i", &choix);
 
 			switch(choix) {
 				case 8:
-					if(complet(*au))
-                                          printf("\nL'AUTOMATE EST BIEN COMPLET\n \n");
+					if(deterministe(*au))
+                                          printf("\nL'AUTOMATE EST BIEN DETERMINISTE\n \n");
                                        else
-                                          printf("\nL'AUTOMATE N'EST PAS COMPLET!\n \n");
+                                          printf("\nL'AUTOMATE N'EST PAS DETERMINISTE!\n \n");
                                     break;
                               case 9:
                 	               continuer = 0;
@@ -253,15 +244,4 @@ void Completude(void){
      
      
     	}
-    }
-
-	
-
-
-
-
-
-
-
-
-
+}
