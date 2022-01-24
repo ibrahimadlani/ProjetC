@@ -2,7 +2,7 @@
 #include "../include/exo5.h"
 
 
-/* 29/12/21 by Saliou */
+/* QUESTION 5 */
 
 typedef struct s_liste {
         int state;	// Nom de l'etat
@@ -107,6 +107,7 @@ void completer(automate* au) {
         }
     }
 }
+
 // Affiche l'automate passé en paramètre
 void afficheAutomate2(automate au){
 	int i,j;
@@ -152,7 +153,7 @@ void afficheAutomate2(automate au){
 }
 
 
-
+// Interface de la question 5
 void CompleteAu(void) {
 
    	int continuer = 1;
