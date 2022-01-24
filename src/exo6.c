@@ -1,6 +1,7 @@
 #include "../include/imports.h"
 #include "../include/exo6.h"
 
+/* QUESTION 6 */
 
 typedef struct s_liste {
         int state;	// Nom de l'etat
@@ -16,6 +17,7 @@ typedef struct {
 } automate;
 
 
+// Fonction qui vérifie si un automate est déterministe
 int deterministe(automate au) {
     int i,j;
     int reference = 1;
@@ -46,7 +48,7 @@ int deterministe(automate au) {
     return reference;
 }
 
-// Fonction qui ajouter un element à une liste
+// Fonction qui ajoute un element à une liste
 void ajouterListe(liste** l,int q){
 	liste* ptl;
 	liste* tmp;
@@ -140,6 +142,7 @@ void afficherAutomate(automate au){
 	printf("\n");
 }
 
+// Interface de la question 6
 void isAuDeterministic(void){
     int continuer = 1;
    	int continuer2 = 1;
