@@ -41,7 +41,8 @@ void appartient(char langage[],char alphabet[]){
 
 
 /*
- * --- fonction puis ---
+ *fonction qui trouve la puissance d'un langage
+ *@param langage, power
  */
 
 
@@ -57,7 +58,8 @@ void puis(char langage[],int power){
 
 
 /*
- * --- fonction vide ---
+ *fonction qui vérifie si le langage est vide
+ *@param langage
  */
 
 void vide(char langage[]){
@@ -67,7 +69,8 @@ void vide(char langage[]){
 
 
 /*
- * --- fonction concat ---
+ *fonction qui concatène deux langages
+ *@param langage1, langage2
  */
 
 void concat(char langage1[],char langage2[]){
@@ -77,7 +80,8 @@ void concat(char langage1[],char langage2[]){
 
 
 /*
- * --- fonction miroir ---
+ *fonction qui trouve le miroir d'un langage
+ *@param langage
  */
 
 void miroir(char langage[]){
@@ -98,7 +102,8 @@ void miroir(char langage[]){
 }
 
 /*
- * --- fonction estFini ---
+ *fonction qui vérifie si le langage est fini
+ *@param langage
  */
 
 
