@@ -1,6 +1,11 @@
 #include "../include/imports.h"
 #include "../include/exo3.h"
 
+/*
+ *fonction qui permet de vérifier si un mot est reconnu par l'automate
+ */
+
+
 void CheckWordRecognized(void){
 		FILE *fp;
    		int states;
@@ -19,7 +24,7 @@ void CheckWordRecognized(void){
    		
    		if(fp == NULL)
    		{
-   			perror("Error opening file");
+   			perror("Erreur lors de l'ouverture du fichier");
       		return;
 		}
 
@@ -31,7 +36,7 @@ void CheckWordRecognized(void){
       		states = atoi(line);
       		if(states >= 10) 
       		{
-      			printf("The automatic must have under ten(<10) states!");
+      			printf("L'automate doit avoir en dessous de 10 états (<10)!");
       			return;
 			}
 		}
@@ -61,7 +66,7 @@ void CheckWordRecognized(void){
 						
 			if(cnt >= 10)
 			{
-				printf("The alphabet must have under ten(<10) different symbols!");
+				printf("L'alphabet doit avoir en dessous de 10 symboles différents (<10)!");
       			return;
 			}
 			
@@ -134,12 +139,12 @@ void CheckWordRecognized(void){
 	do{
 
 	fflush(stdin);
-    printf("Give the input:");
+    printf("Donnez votre entrée:");
     fgets(input,30,stdin);
 
 	if(CheckString(input,alphabet) == 0)
 	  {
-			printf("The input is wrong!");
+			printf("Mauvaise entrée!");
 			return;
 	  }
 	  
@@ -181,19 +186,19 @@ void CheckWordRecognized(void){
 	if(flag == 1)
 	{
 		printf("--------------------------");
-		printf("\nThe Input is acceptable!\n");
-		printf("The Final State is q%c\n",final_state);
+		printf("\nEntrée acceptable!\n");
+		printf("L'état final est :  q%c\n",final_state);
 		printf("--------------------------");
 	}
 	else
 	{
 		printf("------------------------------");
-		printf("\nThe Input is NOT acceptable!\n");
-		printf("The Final State is q%c\n",final_state);
+		printf("\nVotre entrée est pas acceptable!\n");
+		printf("L'état final est : q%c\n",final_state);
 		printf("------------------------------");
 	}
 	
-	printf ("\nDo you want to continue y/n: ");
+	printf ("\nVoulez-vous continuer? y/n: ");
 	ch = getchar();
 	system("clear");
 	}while(ch == 'y' || ch == 'Y');
@@ -209,7 +214,14 @@ void CheckWordRecognized(void){
 	return;
 }
 
-	int CheckString(char *string,char *alphabet)
+
+
+/*
+ *Vérification du mot
+ *@param *string, *alphabet
+ */
+
+int CheckString(char *string,char *alphabet)
 	{
         
 		int i = 0, j = 0;
