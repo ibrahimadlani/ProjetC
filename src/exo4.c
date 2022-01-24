@@ -1,8 +1,7 @@
 #include "../include/imports.h"
 #include "../include/exo4.h"
 
-
-/* 28/12/21 by Saliou */
+/* QUESTION 4 */
 
 typedef struct s_liste {
         int state;	// Nom de l'etat
@@ -19,6 +18,7 @@ typedef struct {
 
 
 
+// Fonction qui vérifie si un automate est complet
 int complet(automate au) {
 	int i,j;
 	int nb =0;
@@ -40,6 +40,8 @@ int complet(automate au) {
 
 	return 1;
 }    
+
+
 // Fonction qui ajouter un element à une liste
 void ajouteListe(liste** l,int q){
 	liste* ptl;
@@ -141,7 +143,7 @@ void afficheAutomate1(automate au){
 
 
 
-
+//Interface de la question 4
 void Completude(void){
 
    	int continuer = 1;
@@ -153,11 +155,6 @@ void Completude(void){
         int targ;
 	char tran;
 	
-
-	
-
-	
-
 
     while(continuer) {
     	printf("Construisez l'automate à vérifier (Appuyer sur la Touche '1' pour continuer): \n");
