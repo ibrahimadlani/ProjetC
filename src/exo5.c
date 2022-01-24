@@ -72,9 +72,6 @@ void ajouteTransition2(automate* au, int src, int targ, char alpha){
 
 
 
-
-
-
 // Fonction qui complete l'automate passé en paramètre
 void completer(automate* au) {
 	liste*** tmp = (liste***) malloc((au->size + 1)*sizeof(liste**));
@@ -115,7 +112,7 @@ void afficheAutomate2(automate au){
 	int i,j;
 	unsigned char c;
 
-// affichage des états initiaux
+	// affichage des états initiaux
 	printf("\nLes etats initiaux\n");
 	
 	for (i=0; i<au.size; i++){
@@ -124,7 +121,7 @@ void afficheAutomate2(automate au){
 		}
 	}
 
-// affichage des états finaux
+	// affichage des états finaux
 	printf("\nLes etats finaux\n");
 	for (i=0; i<au.size; i++){
 		if(au.final[i] == 1){
@@ -132,7 +129,7 @@ void afficheAutomate2(automate au){
 		}
 	}
 
-// affichage des transitions
+	// affichage des transitions
 	printf("\nLes Transitions\n");
 	
 	for (i=0; i<au.size; i++){
@@ -156,14 +153,6 @@ void afficheAutomate2(automate au){
 
 
 
-
-
-
-
-
-
-
-
 void CompleteAu(void) {
 
    	int continuer = 1;
@@ -175,10 +164,6 @@ void CompleteAu(void) {
         int targ;
 	char tran;
 	
-	
-
-	
-
 
     while(continuer) {
     	printf("Construisez l'automate à compléter (Appuyer sur la Touche '1' pour continuer): \n");
@@ -244,7 +229,6 @@ void CompleteAu(void) {
     	}
 
  
-    	
     	while(continuer2) {
     		printf("Rendons l'automate saisi complet!\n (Appuyer sur '8' pour  le compléter\n '9' pour quitter: ");
 			scanf("%i", &choix);
@@ -256,17 +240,16 @@ void CompleteAu(void) {
 					completer(au);
 					afficheAutomate2(*au);
 					break;
-                              case 9:
-                	               continuer = 0;
-                	               continuer2 = 0;
-                	               break;     
+                        case 9:
+                	        continuer = 0;
+                	        continuer2 = 0;
+                	        break;     
                 
-                               default:
-                	             printf("Mauvaise entrée\n");
-                	              
-                	             break;	
+                        default:
+                	        printf("Mauvaise entrée\n");
+                	        break;	
     	                       
-    	                       } 
+    	    } 
     	
     	               	
 		}
@@ -275,14 +258,3 @@ void CompleteAu(void) {
      
     	}
     }
-
-	
-
-
-
-
-
-
-
-
-

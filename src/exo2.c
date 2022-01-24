@@ -6,7 +6,7 @@ char G_initialState[15];
 char G_finiteState[15];
 int G_transactionNbr;
 
-void saveAEF(char state[],char initialState[],char finiteState[],int transactionNbr){
+void saveAEF(int nombredetat,char state[],char initialState[],char finiteState[],int transactionNbr){
 
     FILE *f = fopen("automate.txt", "w");
     
@@ -15,6 +15,7 @@ void saveAEF(char state[],char initialState[],char finiteState[],int transaction
         printf("Error opening file!\n");
         exit(1);
     }
+    fprintf(f,"%d\n", nombredetat);
 
     fprintf(f, "%s\n", state);
 
@@ -26,7 +27,7 @@ void saveAEF(char state[],char initialState[],char finiteState[],int transaction
 
     for(int i = 0 ; i < transactionNbr ; i++){
 
-        printf("entrer votre transaction ex(1,a,2) : ");
+        printf("entrer votre transaction ex : ");
         scanf("%s",transaction);
 
         fprintf(f, "%s\n", transaction);
@@ -41,8 +42,12 @@ void enterAEF(void){
     char initialState[15];
     char finiteState[15];
     int transactionNbr = 0;
+    int nombredetat = 0;
 
-    printf("entrer tous les etats ex ({1,2,3,4}: ");
+    printf("entrer le nombre d'etat : ");
+    scanf("%d", &nombredetat);
+
+    printf("entrer les symboles de l'automate ");
     scanf("%s", state);
 
     printf("entrer les etats iniale : ");
@@ -54,7 +59,7 @@ void enterAEF(void){
     printf("entrer le nombre de transaction : ");
     scanf("%d", &transactionNbr);
 
-    saveAEF(state,initialState,finiteState,transactionNbr);
+    saveAEF(nombredetat,state,initialState,finiteState,transactionNbr);
 
 }
 
@@ -111,7 +116,7 @@ void editeAEF(){
             scanf("%s",choix);
 
             if(strcmp(choix,"n")){
-                printf("\nentrer tous les etats ex ({1,2,3,4}: ");
+                printf("\nentrer tous les etats ex : ");
                 scanf("%s", G_state);
             }
 
@@ -148,22 +153,4 @@ void editeAEF(){
     saveAEF(G_state,G_initialState,G_finiteState,G_transactionNbr);
 
     fclose(f);
-
-    // printf("votre automate est : \n");
-    // importAEF();
-    
-    // printf("\nles etats de l'automate est : %s\n",G_state);
-    // // scanf("%s", state);
-
-    // printf("es etats iniale de l'automate est : %s\n",G_initialState);
-    // // scanf("%s",initialState);
-
-    // printf("les etats finalde l'automate est : %s\n",G_finiteState);
-    // // scanf("%s", finiteState);
-
-    // printf("le nombre de transaction de l'automate est : %d\n",G_transactionNbr);
-    // // scanf("%d", &transactionNbr);
-
-    // // saveAEF(state,initialState,finiteState,transactionNbr);
-    // scanf("%d",G_transactionNbr);
 }
