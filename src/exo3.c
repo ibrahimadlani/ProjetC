@@ -73,7 +73,8 @@ void CheckWordRecognized(void){
 		}
       	
       	if(i==3){
-      		start = line[0];}
+      		start = line[0];
+		}
  	
  		if(i==4){
  			
